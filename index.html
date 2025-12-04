@@ -1,37 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web học tập</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web học tập</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+  <header>
     <!-- NAVBAR -->
     <div class="container">
         <nav>
         <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="gioithieu.html">Giới thiệu</a></li>
-            <li><a href="dien-dan.html">Diễn đàn</a></li>
-            <li><a href="lienhe.html">Liên hệ</a></li>
-            <li class="login"><a href="login.html">Đăng nhập</a></li>
+          <li><a href="">Trang chủ</a></li>
+          <li><a href="">Giới thiệu</a></li>
+          <li><a href="">Diễn đàn</a></li>
+          <li><a href="">Liên hệ</a></li>
+          <li class="login"><a>Đăng nhập</a></li>
         </ul>
         </nav>
     </div>
-    </header>
+  </header>
 
-    <!-- MAIN LAYOUT -->
-     <div class = "left-colum">
-            <h3>Danh mục</h3>
-            <ul>
-                <li><a href="#">Từ vựng</a></li>
-                <li><a href="#">Ngữ pháp</a></li>
-                <li><a href="#">Bài tập</a></li>
-                <li><a href="#">Mini Game Học Tập</a></li>
-                <li><a href="#">Tài liệu miễn phí</a></li>
-            </ul>
-    </div>
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
+    <!-- Danh mục học tập -->
+    <aside class="left-column">
+      <h3>Danh mục</h3>
+      <ul class="menu">
+        <li><a href="">Từ vựng</a></li>
+        <li><a href="">Ngữ pháp</a></li>
+        <li><a href="">Bài tập</a></li>
+        <li><a href="">Mini Game Học Tập</a></li>
+        <li><a href="">Tài liệu miễn phí</a></li>
+      </ul>
+    </aside>
+
+    <!-- Nội dung -->
+    <main class="right-column">
+      <!-- điểm danh hằng ngày -->
+      <section class="diem-danh">
+        <h3>Điểm danh hằng ngày</h3>
+        <p>Bạn chưa điểm danh hôm nay. Hãy điểm danh để nhận EXP nhé!</p>
+        <button>Điểm danh</button>
+        <hr>
+      </section>
+
+      <!-- Thông tin người dùng -->
+      <section class="user-info">
+        <h3>Thông tin</h3> 
+        <img class="avatar" src="images/Avatar-base.png" alt="Avatar">
+        <p>Name : <span class="name">Chưa có tên</span></p>
+        <p>ID : <span class="id">##########</span></p>
+        <p>Giới tính : <span>Chưa có</span></p>
+        <p>EXP : <span class="exp">0</span></p>
+        <p>Danh hiệu : <span class="danhhieu">Chưa có</span></p>
+        <p>Bảng xếp hạng : <span class="top">###</span></p>
+        <hr>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Web học tập. All rights reserved.</p>
+  </footer>
 </body>
 </html>
