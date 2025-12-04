@@ -5,23 +5,32 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #222;
-  background: #fafafa;
+  background: linear-gradient(180deg, #233f6f, #eef6ff);
 }
 .avatar { 
   display: block; 
   max-width: 200px; 
   height: auto;
   border-radius: 10px;
+  margin: 0 auto ;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #ccc;
 }
 
 /* Navbar */
 .container { 
-  max-width: 1080px; 
-  height: 50px;
   margin: 0 auto; 
   padding: 0 16px; 
-  background: linear-gradient(10deg, #263fb1, #764ba2)
 }
+header {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  margin-top: -80px;
+  background: linear-gradient(10deg, #263fb1, #764ba2)
+} 
+
 /* Định dạng nav */
 nav ul {
   list-style: none; 
@@ -32,6 +41,7 @@ nav ul {
   flex-wrap: wrap;
 }
 nav a {
+  font-weight: 600;
   text-decoration: none; 
   color: #2b2b2b;
   padding: 8px 12px; 
@@ -44,62 +54,79 @@ nav a:hover {
 /*Layout Grid Chinhs 30 70*/
 .layout {
   display: grid;
-  grid-template-columns: 30% 70%;  
+  grid-template-columns: 20% 80%;  
   gap: 16px;
   max-width: 1080px;
   margin: 16px auto;
   padding: 0 16px;
+  margin-top: 80px;
 }
 
 /*Cột trái Danh mujc*/
 .left-column {
-  background: #f7f7f7;
-  border: 1px solid #e4e4e4;
+  background: linear-gradient(180deg, #5e81bd, #eef6ff);
+  border: 1px solid #4c719c;
   border-radius: 8px;
   padding: 12px;
 }
 .left-column h3 { 
   margin: 0 0 8px; 
 }
-
-.menu { list-style: none; 
+.menu { 
+  list-style: none; 
   margin: 0; 
   padding: 0; 
 }
-
 .menu li + li { 
   margin-top: 8px; 
 }
-
 .menu a {
+  font-weight: 600;
   display: block;
   padding: 8px 10px;
   border-radius: 6px;
   color: #222;
   text-decoration: none;
-  background: #fff;
-  border: 1px solid #eee;
+  background: #f7f9fc21 ;
+  border: 1px dashed rgb(85, 85, 195);
 }
 .menu a:hover {
   background: #eef6ff;
   border-color: #d6e8ff;
 }
 
+/*tho thanh hang doc man hinh hep cho de doc*/
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
 /*Cột phải (nội dung)*/
 .right-column {
-  background: #fbfdff;
-  border: 1px solid #e8f0ff;
+  background: linear-gradient(180deg, #5e81bd, #eef6ff);
+  border: 1px solid #4070c9;
   border-radius: 8px;
   padding: 12px;
 }
 
 .diem-danh, .user-info {
-  background: #fff;
+  background: #fff21;
   border: 1px solid #eaeaea;
   border-radius: 8px;
   padding: 12px;
 }
-.diem-danh { margin-bottom: 12px; }
+.user-info p {
+  font-weight: 600;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #222;
+  text-decoration: none;
+  background: #f7f9fc21 ;
+  border: 1px dashed rgb(85, 85, 195);
+}
+.diem-danh { 
+  margin-bottom: 12px; 
+}
 .diem-danh button {
   padding: 8px 12px;
   border: none;
@@ -112,33 +139,25 @@ nav a:hover {
   background: #1f69df; 
 }
 
-
 /*Footer */
 footer {
   text-align: center;
   padding: 16px;
   color: #666;
+  background: #f7f9fc21;
+  
 }
 
-/*Responsive: màn nhỏ về 1 cột*/
-@media (max-width: 768px) {
-  .layout { grid-template-columns: 1fr; }
-}
-
-
-
-.right-column,
-.right-colum {
+.right-column {
   display: flex;
   gap: 16px;
+
 }
 
-.right-column .diem-danh,
-.right-colum .diem-danh { flex: 1; }   /* cột trái */
-.right-column .user-info,
-.right-colum .user-info { flex: 1; }   /* cột phải */
+.right-column .diem-danh { flex: 6; }   /* cột trái */
+.right-column .user-info { flex: 4; }   /* cột phải */
 
-/* Responsive: xuống 1 cột */
+/* xuong dong cho dien thoai*/
 @media (max-width: 768px) {
   .right-column,
   .right-colum {
