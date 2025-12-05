@@ -1,76 +1,443 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web học tập</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="trangchu.css">
-    <title>Document</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web học tập</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Web học tập - Nền tảng học tập thông minh với hệ thống điểm danh hàng ngày">
+  <title>Web Học Tập Tiếng Anh - Nền Tảng Học Tập Thông Minh</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <!-- NAVBAR -->
-    <div class="container">
-        <nav>
-        <ul>
-          <li><a href="">Trang chủ</a></li>
-          <li><a href="">Giới thiệu</a></li>
-          <li><a href="">Diễn đàn</a></li>
-          <li><a href="">Liên hệ</a></li>
-          <li class="login"><a>Đăng nhập</a></li>
-        </ul>
-        </nav>
-    </div>
-  </header>
 
-  <!-- MAIN LAYOUT -->
-  <div class="layout">
-    <!-- Danh mục học tập -->
-    <aside class="left-column">
-      <h3>Danh mục</h3>
-      <ul class="menu">
-        <li><a href="">Từ vựng</a></li>
-        <li><a href="">Ngữ pháp</a></li>
-        <li><a href="">Bài tập</a></li>
-        <li><a href="">Mini Game Học Tập</a></li>
-        <li><a href="">Tài liệu miễn phí</a></li>
-        <li><a href="">Đăng kí Khoá học</a></li>
+  <!--NAVBAR-->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-graduation-cap"></i> Học tập tiếng anh cùng Seven Day
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-home"></i> Trang chủ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#introduce">
+              <i class="fas fa-info-circle"></i> Giới thiệu
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#forum">
+              <i class="fas fa-comments"></i> Diễn đàn
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">
+              <i class="fas fa-envelope"></i> Liên hệ
+            </a>
+          </li>
+          <li class="nav-item" id="authButton">
+            <a class="nav-link btn-login" href="#" onclick="showLoginModal(); return false;">
+              <i class="fas fa-sign-in-alt"></i> Đăng nhập
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT - 2 CỘT-->
+  <div class="main-layout">
+    
+    <!-- LEFT COLUMN - DANH MUjC -->
+    <aside class="sidebar">
+      <h3><i class="fas fa-bars"></i> Danh mục</h3>
+      <ul class="menu-list">
+        <li>
+          <a href="#vocabulary">
+            <i class="fas fa-book"></i> Từ vựng
+          </a>
+        </li>
+        <li>
+          <a href="#grammar">
+            <i class="fas fa-language"></i> Ngữ pháp
+          </a>
+        </li>
+        <li>
+          <a href="#exercise">
+            <i class="fas fa-pen"></i> Bài tập
+          </a>
+        </li>
+        <li>
+          <a href="#game">
+            <i class="fas fa-gamepad"></i> Mini Game
+          </a>
+        </li>
+        <li>
+          <a href="#document">
+            <i class="fas fa-file-alt"></i> Tài liệu
+          </a>
+        </li>
       </ul>
     </aside>
 
-    <!-- Nội dung -->
-    <main class="right-column">
-      <!-- điểm danh hằng ngày -->
-      <section class="diem-danh">
-        <h3>Điểm danh hằng ngày</h3>
-        <p>Bạn chưa điểm danh hôm nay. Hãy điểm danh để nhận EXP nhé!</p>
-        <button>Điểm danh</button>
-        <hr>
+    <!-- RIGHT COLUMN - NỘI DUNG CHÍNH (2 CỘT CON) -->
+    <main class="main-content">
+      
+      <!-- CỘT 1  ĐIỂM DANH -->
+      <section class="card attendance-card" id="attendanceCard">
+        <h3><i class="fas fa-calendar-check"></i> Điểm danh hằng ngày</h3>
+        
+        <!-- Streak Display -->
+        <div class="attendance-streak">
+          <div>
+            <i class="fas fa-fire"></i>
+          </div>
+          <div class="streak-number" id="streakNumber">0</div>
+          <div>Ngày liên tiếp</div>
+        </div>
+        
+        <!-- Statistics Grid -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-number" id="totalDays">0</span>
+            <span class="stat-label">Tổng ngày</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="expEarned">0</span>
+            <span class="stat-label">EXP nhận</span>
+          </div>
+        </div>
+        
+        <!-- Check-in Button -->
+        <button class="btn btn-attendance" onclick="checkIn()" id="checkInBtn">
+          <i class="fas fa-check-circle"></i> Điểm danh ngay
+        </button>
+        
+        <!-- Next Check-in Message -->
+        <div id="nextCheckIn" class="text-center mt-3" style="display: none;">
+          ✅ Bạn đã điểm danh hôm nay!<br>
+          <small>Quay lại vào ngày mai nhé!</small>
+        </div>
       </section>
 
-      <!-- Thông tin người dùng -->
-      <section class="user-info">
-        <h3>Thông tin</h3> 
-        <img class="avatar" src="images/image-avt.png" alt="Avatar">
-        <p>Name : <span class="name">Chưa có tên</span></p>
-        <p>ID : <span class="id">##########</span></p>
-        <p>Giới tính : <span>Chưa có</span></p>
-        <p>EXP : <span class="exp">0</span></p>
-        <p>Danh hiệu : <span class="danhhieu">Chưa có</span></p>
-        <p>Bảng xếp hạng : <span class="top">###</span></p>
-        <hr>
+      <!-- CỘT 2: USER INFO CARD - THÔNG TIN NGƯỜI DÙNG -->
+      <section class="card user-card" id="userCard">
+        <!-- Login Required State (Default) -->
+        <div class="login-required">
+          <i class="fas fa-user-circle"></i>
+          <h4>Vui lòng đăng nhập</h4>
+          <p>Đăng nhập để xem thông tin cá nhân và sử dụng đầy đủ tính năng của hệ thống</p>
+          <button class="btn btn-primary mt-3" onclick="showLoginModal()">
+            <i class="fas fa-sign-in-alt"></i> Đăng nhập ngay
+          </button>
+        </div>
       </section>
+
     </main>
   </div>
 
-  <footer>
-    <p>&copy; 2024 Web học tập. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+  <!-- ============================================
+       MODAL ĐĂNG NHẬP
+       ============================================ -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">
+            <i class="fas fa-sign-in-alt"></i> Đăng nhập
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">
+                <i class="fas fa-envelope"></i> Email
+              </label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="loginEmail" 
+                placeholder="Nhập email của bạn"
+                required
+                autocomplete="email"
+              >
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">
+                <i class="fas fa-lock"></i> Mật khẩu
+              </label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="loginPassword" 
+                placeholder="Nhập mật khẩu"
+                required
+                autocomplete="current-password"
+              >
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="fas fa-sign-in-alt"></i> Đăng nhập
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <p class="mb-0">Chưa có tài khoản? 
+              <a href="#" onclick="showRegisterModal(); return false;" class="text-primary fw-bold">Đăng ký ngay</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MODAL ĐĂNG KÝ
+       ============================================ -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">
+            <i class="fas fa-user-plus"></i> Đăng ký tài khoản
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm" onsubmit="handleRegister(event)">
+            
+            <!-- Avatar Upload -->
+            <div class="mb-4 text-center">
+              <img 
+                id="avatarPreview" 
+                class="avatar-preview" 
+                src="https://via.placeholder.com/150/667eea/ffffff?text=Avatar" 
+                alt="Avatar Preview"
+              >
+              <input 
+                type="file" 
+                class="form-control" 
+                id="avatarInput" 
+                accept="image/*" 
+                onchange="previewAvatar(event)"
+              >
+              <small class="text-muted">
+                <i class="fas fa-info-circle"></i> Chọn ảnh đại diện (tối đa 2MB)
+              </small>
+            </div>
+            
+            <div class="row">
+              <!-- Họ và tên -->
+              <div class="col-md-6 mb-3">
+                <label for="registerName" class="form-label">
+                  <i class="fas fa-signature"></i> Họ và tên *
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="registerName" 
+                  placeholder="Nguyễn Văn A"
+                  required
+                  autocomplete="name"
+                >
+              </div>
+              
+              <!-- Giới tính -->
+              <div class="col-md-6 mb-3">
+                <label for="registerGender" class="form-label">
+                  <i class="fas fa-venus-mars"></i> Giới tính *
+                </label>
+                <select class="form-select" id="registerGender" required>
+                  <option value="">Chọn giới tính</option>
+                  <option value="Nam">Nam</option>
+                  <option value="Nữ">Nữ</option>
+                  <option value="Khác">Khác</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Ngày sinh -->
+            <div class="mb-3">
+              <label for="registerBirthday" class="form-label">
+                <i class="fas fa-birthday-cake"></i> Ngày sinh *
+              </label>
+              <input 
+                type="date" 
+                class="form-control" 
+                id="registerBirthday" 
+                required
+              >
+              <small class="text-muted">
+                <i class="fas fa-info-circle"></i> Phải từ 5 tuổi trở lên
+              </small>
+            </div>
+            
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">
+                <i class="fas fa-envelope"></i> Email *
+              </label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="registerEmail" 
+                placeholder="example@email.com"
+                required
+                autocomplete="email"
+              >
+            </div>
+            
+            <!-- Mật khẩu -->
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">
+                <i class="fas fa-lock"></i> Mật khẩu *
+              </label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="registerPassword" 
+                placeholder="Tối thiểu 6 ký tự"
+                required
+                minlength="6"
+                autocomplete="new-password"
+              >
+            </div>
+            
+            <!-- Xác nhận mật khẩu -->
+            <div class="mb-3">
+              <label for="registerPasswordConfirm" class="form-label">
+                <i class="fas fa-lock"></i> Xác nhận mật khẩu *
+              </label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="registerPasswordConfirm" 
+                placeholder="Nhập lại mật khẩu"
+                required
+                autocomplete="new-password"
+              >
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="fas fa-user-plus"></i> Đăng ký
+            </button>
+          </form>
+          
+          <div class="text-center mt-3">
+            <p class="mb-0">Đã có tài khoản? 
+              <a href="#" onclick="showLoginModal(); return false;" class="text-primary fw-bold">Đăng nhập</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MODAL CHỈNH SỬA THÔNG TIN
+       ============================================ -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfileModalLabel">
+            <i class="fas fa-edit"></i> Chỉnh sửa thông tin
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editProfileForm" onsubmit="handleUpdateProfile(event)">
+            
+            <!-- Avatar Upload -->
+            <div class="mb-4 text-center">
+              <img 
+                id="editAvatarPreview" 
+                class="avatar-preview" 
+                src="https://via.placeholder.com/150/667eea/ffffff?text=Avatar" 
+                alt="Avatar Preview"
+              >
+              <input 
+                type="file" 
+                class="form-control" 
+                id="editAvatarInput" 
+                accept="image/*" 
+                onchange="previewEditAvatar(event)"
+              >
+              <small class="text-muted">
+                <i class="fas fa-info-circle"></i> Chọn ảnh mới (hoặc giữ nguyên)
+              </small>
+            </div>
+            
+            <!-- Họ và tên -->
+            <div class="mb-3">
+              <label for="editName" class="form-label">
+                <i class="fas fa-signature"></i> Họ và tên
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="editName" 
+                required
+              >
+            </div>
+            
+            <!-- Giới tính -->
+            <div class="mb-3">
+              <label for="editGender" class="form-label">
+                <i class="fas fa-venus-mars"></i> Giới tính
+              </label>
+              <select class="form-select" id="editGender" required>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+            
+            <!-- Ngày sinh -->
+            <div class="mb-3">
+              <label for="editBirthday" class="form-label">
+                <i class="fas fa-birthday-cake"></i> Ngày sinh
+              </label>
+              <input 
+                type="date" 
+                class="form-control" 
+                id="editBirthday" 
+                required
+              >
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="fas fa-save"></i> Lưu thay đổi
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       TOAST CONTAINER
+       ============================================ -->
+  <div class="toast-container"></div>
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom Scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/main.js"></script>
