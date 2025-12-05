@@ -212,7 +212,7 @@ function updateUI() {
           <h4>Vui lòng đăng nhập</h4>
           <p>Đăng nhập để xem thông tin cá nhân và sử dụng đầy đủ tính năng của hệ thống</p>
           <button class="btn btn-primary mt-3" onclick="showLoginModal()">
-            <i class="fas fa-sign-in-alt"></i> Đăng nhập ngay
+            <i class="fas fa-sign-in-alt" style = "color:white;"></i> Đăng nhập ngay
           </button>
         </div>
       `;
